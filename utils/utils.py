@@ -120,13 +120,3 @@ def eval_precision(inst_id, scores, gt_labels, top=100):
     sort_idx = np.argsort(-scores)
     return np.sum(pos_flag[sort_idx][:top]) / top
 
-if __name__ == '__main__':
-    import os
-
-    os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
-    a=cosine_scheduler_loss(0, 2, 50, 5000,warmup_epochs=5, early_schedule_epochs=30)
-    from matplotlib import pyplot as plt
-
-    plt.plot(a)
-    plt.savefig('1.png')
-    plt.show()
