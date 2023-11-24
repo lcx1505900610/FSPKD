@@ -95,5 +95,5 @@ class SketchEncoder(nn.Module):
 
 if __name__ == '__main__':
     # a=SketchEncoder(100)
-    model = timm.create_model('vit_huge_patch16_224')  # pretrained=True,
+    model = timm.create_model('vit_base_patch16_224')  # pretrained=True,
     print(model.default_cfg)
