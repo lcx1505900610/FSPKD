@@ -141,17 +141,3 @@ class CenterAlignment(nn.Module):
             self.center_skt[classes_in_batch] /= self.center_skt[classes_in_batch].norm(p=2, dim=1, keepdim=True)
 
         return classes_in_batch
-
-if __name__ == '__main__':
-    # print(torch.pdist(torch.tensor([[1.0,2.0,3.0],
-    #                                 [4.0,5.0,6.0],
-    #                                 [4.0, 5.0, 6.0],
-    #                                 [7.0,8.0,9.0]])).pow(2).mul(-2).exp().mean().log())
-    # print(torch.unique(torch.tensor([1,25,51,52,3,5,5,1,4,5]), return_counts=True, sorted=True, return_inverse=True))
-    # ca_loss = CenterAlignment(104, fea_dim=1024).cuda()
-    # label=torch.tensor([1,3,5,0,1,5]).cuda()
-    # x=torch.zeros([16,1024]).cuda()
-    # a=ca_loss(x,label)
-    x=torch.einsum('nc,nc->n', [torch.zeros([24,768]),torch.zeros([24,768])])
-    s=torch.exp(x.unsqueeze(-1))
-    print(x.shape,x.unsqueeze(-1).shape,s/sum(s))
