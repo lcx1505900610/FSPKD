@@ -165,8 +165,3 @@ class Student_SKT(nn.Module):
         x = self.encoder.blocks(x)
         x = self.encoder.norm(x)
         return x
-
-if __name__ == '__main__':
-    model=Student_IMG(104)
-    X=torch.zeros([4,3,224,224])
-    print(model(X).shape)
