@@ -3,7 +3,6 @@
 # @Author : 李昌杏
 # @File : train_student.py
 # @Software : PyCharm
-#--samples_per_plugin=scalars=100000
 import argparse
 import os
 import random
