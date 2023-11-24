@@ -17,7 +17,7 @@ import network.student as vits
 from network.teacher import ModalityFusionNetwork
 from datasets import load_data
 import utils.losses as losses
-from extract_feature import valid
+from test import valid
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 class Option:
     def __init__(self):
