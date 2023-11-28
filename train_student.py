@@ -157,8 +157,8 @@ def main():
 
                 q_loss = losses.q_loss(skt_token, skt_neg_token, img_token,img_neg_token)
 
-                cn_loss = (loss_cn(skt_logits, label) + loss_cn(skt_neg_logits, label) +
-                           loss_cn(img_logits, label_neg) +
+                cn_loss = (loss_cn(skt_logits, label) + loss_cn(skt_neg_logits, label_neg) +
+                           loss_cn(img_logits, label) +
                            loss_cn(img_neg_logits, label_neg)) / 4
 
                 kld_loss=(loss_cn(*losses.sim_moco(skt_logits,sketch1_fea,loss_moco_sk))+
