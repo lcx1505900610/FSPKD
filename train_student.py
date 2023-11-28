@@ -151,8 +151,8 @@ def main():
                 img_logits,img_fea,img_token= student_img(photo)
                 img_neg_logits,img_neg_fea,img_neg_token= student_img(photo_neg)
 
-                center_align_loss = (ca_loss(skt_fea, label, 'skt')+ca_loss(skt_neg_fea, label, 'skt')+
-                                     ca_loss(img_fea, label, 'img') + ca_loss(img_neg_fea, label, 'img')
+                center_align_loss = (ca_loss(skt_fea, label, 'skt')+ca_loss(skt_neg_fea, label_neg, 'skt')+
+                                     ca_loss(img_fea, label, 'img') + ca_loss(img_neg_fea, label_neg, 'img')
                                      ) * loss_scheduler[it]/4
 
                 q_loss = losses.q_loss(skt_token, skt_neg_token, img_token,img_neg_token)

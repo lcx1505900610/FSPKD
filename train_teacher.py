@@ -12,7 +12,7 @@ import torch
 from torch.cuda.amp import GradScaler
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from datasets import Teacherdatasets, load_data
+from datasets import load_data
 from network.teacher import ModalityFusionNetwork
 from utils.losses import MOCO
 import os

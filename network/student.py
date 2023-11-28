@@ -5,8 +5,6 @@
 # @Software : PyCharm
 import math
 import warnings
-from collections import OrderedDict
-
 import timm
 import torch
 import torch.nn as nn
@@ -88,16 +86,6 @@ class Student_IMG(nn.Module):
     def forward(self, photo):#class_logits,representation,cls_token,
         x=self.embedding(photo)
         return self.classify(x),self.fc(x),x
-    def f(self,photo):
-        x = self.encoder.patch_embed(photo)
-        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1)  # stole cls_tokens impl from Phil Wang, thanks
-
-        x = torch.cat((cls_token, x), dim=1)
-
-        x = self.encoder.pos_drop(x + self.encoder.pos_embed)
-        x = self.encoder.blocks(x)
-        x = self.encoder.norm(x)
-        return x
 
 class Student_SKT(nn.Module):
     def __init__(self, num_classes, feature_dim=768, representation=256, encoder_backbone='vit_base_patch16_224',
@@ -151,17 +139,3 @@ class Student_SKT(nn.Module):
     def forward(self, photo):  # class_logits,representation,cls_token,
         x = self.embedding(photo)
         return self.classify(x), self.fc(x), x
-
-    def f(self,photo):
-        x = self.encoder.patch_embed(photo)
-        b, h_w, d = x.shape
-        x1 = self.scale(photo).view(b, d, h_w).transpose(1, 2)
-        x = (x + x1) / 2
-        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1)  # stole cls_tokens impl from Phil Wang, thanks
-
-        x = torch.cat((cls_token, x), dim=1)
-
-        x = self.encoder.pos_drop(x + self.encoder.pos_embed)
-        x = self.encoder.blocks(x)
-        x = self.encoder.norm(x)
-        return x
