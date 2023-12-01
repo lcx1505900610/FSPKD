@@ -41,8 +41,6 @@ class PhotoEncoder(nn.Module):
     def forward(self, photo):
         return self.classify(self.forward_features(photo))
 
-    def get_token(self):return self.encoder.cls_token
-
 class SketchEncoder(nn.Module):
     def __init__(self, num_classes, feature_dim=768, encoder_backbone='vit_base_patch16_224',checkpoint_path='weights/vit_base_patch16_224.npz'):
         super().__init__()
@@ -91,7 +89,6 @@ class SketchEncoder(nn.Module):
     def forward(self, sketch):
         return self.classify(self.forward_features(sketch))
 
-    def get_token(self): return self.encoder.cls_token
 
 if __name__ == '__main__':
     # a=SketchEncoder(100)
