@@ -77,9 +77,6 @@ class Student_IMG(nn.Module):
         x = self.encoder.norm(x)
         return x[:,0]
 
-    def forward_features(self, photo):
-        return self.encoder.forward_features(photo)
-
     def classify(self, features):
         return self.mlp_head(features)
 
@@ -129,9 +126,6 @@ class Student_SKT(nn.Module):
         x = self.encoder.blocks(x)
         x = self.encoder.norm(x)
         return x[:, 0]
-
-    def forward_features(self, photo):
-        return self.encoder.forward_features(photo)
 
     def classify(self, features):
         return self.mlp_head(features)
