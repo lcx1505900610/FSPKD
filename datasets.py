@@ -4,6 +4,8 @@
 # @File : datasets.py
 # @Software : PyCharm
 
+#this code from ZSE-SBIR
+#https://github.com/buptLinfy/ZSE-SBIR
 import argparse
 
 import cv2
@@ -356,9 +358,6 @@ def create_dict_texts(texts):
     return dicts
 
 def preprocess(image_path, img_type="im"):
-    # immean = [0.485, 0.456, 0.406]  # RGB channel mean for imagenet
-    # imstd = [0.229, 0.224, 0.225]
-
     immean = [0.5, 0.5, 0.5]  # RGB channel mean for imagenet
     imstd = [0.5, 0.5, 0.5]
 
@@ -366,9 +365,6 @@ def preprocess(image_path, img_type="im"):
         transforms.ToTensor(),
         transforms.Normalize(immean, imstd),
     ])
-
-    # cv2.imshow(f'{image_path}',cv2.imread(image_path))
-    # cv2.waitKey(0)
 
     if img_type == 'im':
         orgi=Image.open(image_path).resize((224, 224)).convert('RGB')
