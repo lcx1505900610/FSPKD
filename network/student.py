@@ -68,7 +68,7 @@ class Student_IMG(nn.Module):
 
     def embedding(self, photo):
         x = self.encoder.patch_embed(photo)
-        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1)  # stole cls_tokens impl from Phil Wang, thanks
+        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1) 
 
         x = torch.cat((cls_token, x), dim=1)
 
@@ -121,7 +121,7 @@ class Student_SKT(nn.Module):
         b, h_w, d = x.shape
         x1 = self.scale(photo).view(b, d, h_w).transpose(1, 2)
         x = (x + x1) / 2
-        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1)  # stole cls_tokens impl from Phil Wang, thanks
+        cls_token = self.encoder.cls_token.expand(x.shape[0], -1, -1) 
 
         x = torch.cat((cls_token, x), dim=1)
 
