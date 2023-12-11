@@ -166,7 +166,7 @@ def main():
                           loss_cn(*losses.sim_moco(img_logits,photo1_fea,loss_moco_im))+
                           loss_cn(*losses.sim_moco(img_neg_logits,photo1_neg_f,loss_moco_im)))/4
 
-                loss = q_loss + cn_loss + kld_loss+center_align_loss
+                loss = q_loss + 0.5*cn_loss + 0.5*kld_loss+2*center_align_loss
 
                 epoch_train_contrastive_loss += loss.item()
 
